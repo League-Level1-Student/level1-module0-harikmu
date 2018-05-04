@@ -21,6 +21,8 @@ import javax.swing.JPanel;
 public class DrumKit implements MouseListener {
 
 	JLabel drumLabelWithImage;
+	
+	JLabel tambourineLabelWithImage;
 
 	public static void main(String[] args) throws Exception {
 		new DrumKit().getGoing();
@@ -62,7 +64,11 @@ public class DrumKit implements MouseListener {
 		drumLabelWithImage.addMouseListener(this);
 		// 18. Add more images to make a drumkit. Remember to add this mouse listener to
 		// each one.
-
+		String tambourine = ("tambourine.png");
+		tambourineLabelWithImage = createLabelImage(tambourine);
+		tambourineLabelWithImage.addMouseListener(this);
+		panel.add(tambourineLabelWithImage);
+		frame.pack();
 	}
 
 	public void mouseClicked(MouseEvent e) {
@@ -74,10 +80,16 @@ public class DrumKit implements MouseListener {
 		// 15. Download a drum sound and drop it into your "default package". You can
 		// find it on freesound.org. To download it, log in as
 		// leagueofamazing/code4life.
+		
 		// 16. If they clicked on the drumImage...
-
+		if(drumClicked == drumLabelWithImage) {
 		// 17. ...use the playSound method to play a drum sound. Test to see if it works
-
+			playSound("drum.wav");
+		}
+		if(drumClicked == tambourineLabelWithImage) {
+			playSound("tambourine.aiff");
+		}
+		
 	}
 
 	private JLabel createLabelImage(String fileName) throws MalformedURLException {
